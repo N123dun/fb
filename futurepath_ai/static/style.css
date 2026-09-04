@@ -1,0 +1,143 @@
+:root {
+  --bg: #0f1720;
+  --panel: #161f2b;
+  --panel-2: #1c2732;
+  --accent: #4fd1c5;
+  --accent-2: #7c9eff;
+  --text: #e8edf2;
+  --muted: #92a1b0;
+  --border: #263241;
+  --radius: 12px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.brand { font-size: 20px; font-weight: 700; }
+.brand span { color: var(--accent); }
+
+.tabs { display: flex; gap: 8px; }
+.tab-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.tab-btn.active { background: var(--accent); color: #08201d; border-color: var(--accent); font-weight: 600; }
+
+main { max-width: 1000px; margin: 0 auto; padding: 24px; }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+.panel-inner { background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; }
+
+/* Chat */
+.chat-window {
+  height: 420px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 8px 4px 16px;
+}
+.msg {
+  max-width: 75%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  line-height: 1.4;
+  font-size: 15px;
+}
+.msg.bot { align-self: flex-start; background: var(--panel-2); border: 1px solid var(--border); }
+.msg.user { align-self: flex-end; background: var(--accent-2); color: #0b1220; }
+
+.chat-input-row { display: flex; gap: 8px; margin-top: 10px; }
+.chat-input-row input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 15px;
+}
+.chat-input-row button, .primary-btn, .add-btn {
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #08201d;
+  font-weight: 600;
+  cursor: pointer;
+}
+.add-btn { background: var(--panel-2); color: var(--text); border: 1px dashed var(--border); font-weight: 500; padding: 8px 14px; margin: 6px 0 14px; }
+
+.matches-area, .roadmap-area { margin-top: 18px; }
+.hidden { display: none; }
+
+.match-card {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.match-card:hover { border-color: var(--accent); }
+.match-card h4 { margin: 0 0 4px; }
+.match-card .sector { color: var(--accent); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; }
+.match-card p { margin: 6px 0 0; color: var(--muted); font-size: 14px; }
+
+.roadmap-area .panel-inner { background: var(--panel-2); }
+.roadmap-block { background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px; padding: 16px; margin-top: 12px; }
+.roadmap-block h3 { margin-top: 0; }
+.roadmap-block ul { margin: 6px 0; padding-left: 20px; }
+.roadmap-block a { color: var(--accent-2); }
+
+/* CV builder */
+.cv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.cv-form label { display: block; margin-bottom: 12px; font-size: 13px; color: var(--muted); }
+.cv-form input, .cv-form textarea {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--panel-2);
+  color: var(--text);
+  font-size: 14px;
+}
+.cv-form h3 { margin-top: 18px; margin-bottom: 6px; font-size: 15px; color: var(--accent); }
+.repeat-block { border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-bottom: 8px; position: relative; }
+.repeat-block .remove-btn {
+  position: absolute; top: 8px; right: 8px;
+  background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 13px;
+}
+
+.cv-preview { background: #fff; color: #111; border-radius: 10px; padding: 24px; height: fit-content; }
+.preview-box h1 { font-size: 22px; margin: 0 0 4px; }
+.preview-box .contact { color: #555; font-size: 13px; margin-bottom: 10px; }
+.preview-box h2 { font-size: 14px; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-top: 18px; }
+.preview-box p, .preview-box li { font-size: 13px; }
+
+@media (max-width: 800px) {
+  .cv-grid { grid-template-columns: 1fr; }
+}

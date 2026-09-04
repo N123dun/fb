@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FuturePath AI</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">FuturePath <span>AI</span></div>
+  <nav class="tabs">
+    <button class="tab-btn active" data-tab="mentor">Mentor Chat</button>
+    <button class="tab-btn" data-tab="cv">CV Builder</button>
+  </nav>
+</header>
+
+<main>
+  <!-- MENTOR CHAT TAB -->
+  <section id="mentor" class="tab-panel active">
+    <div class="panel-inner">
+      <div class="chat-window" id="chatWindow"></div>
+
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" placeholder="Type your answer..." autocomplete="off">
+        <button id="sendBtn">Send</button>
+      </div>
+
+      <div id="matchesArea" class="matches-area hidden"></div>
+      <div id="roadmapArea" class="roadmap-area hidden"></div>
+    </div>
+  </section>
+
+  <!-- CV BUILDER TAB -->
+  <section id="cv" class="tab-panel">
+    <div class="panel-inner cv-grid">
+      <form id="cvForm" class="cv-form">
+        <h2>CV Builder</h2>
+
+        <label>Full name<input type="text" name="full_name" required></label>
+        <label>Email<input type="email" name="email"></label>
+        <label>Phone<input type="text" name="phone"></label>
+        <label>Location<input type="text" name="location" placeholder="e.g. Negombo, Sri Lanka"></label>
+        <label>Target career<input type="text" name="target_career" placeholder="e.g. UI/UX Designer"></label>
+        <label>Professional summary (optional — auto-filled if left blank)
+          <textarea name="summary" rows="3"></textarea>
+        </label>
+        <label>Skills (comma separated)
+          <input type="text" name="skills" placeholder="e.g. Python, Figma, Communication">
+        </label>
+        <label>Languages (comma separated)
+          <input type="text" name="languages" placeholder="e.g. Sinhala, English, Tamil">
+        </label>
+
+        <h3>Education</h3>
+        <div id="educationList"></div>
+        <button type="button" class="add-btn" id="addEducation">+ Add education</button>
+
+        <h3>Experience</h3>
+        <div id="experienceList"></div>
+        <button type="button" class="add-btn" id="addExperience">+ Add experience</button>
+
+        <h3>Projects (optional)</h3>
+        <div id="projectsList"></div>
+        <button type="button" class="add-btn" id="addProject">+ Add project</button>
+
+        <button type="submit" class="primary-btn">Generate CV (.docx)</button>
+      </form>
+
+      <div class="cv-preview">
+        <h2>Live Preview</h2>
+        <div id="previewBox" class="preview-box"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
